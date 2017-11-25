@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+#
+# The Catalog Web application database.
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker

@@ -2,7 +2,8 @@
 #
 # The Catalog Web application.
 from flask import Flask, jsonify, request, url_for, abort
-from database.data_access import get_users, get_user_by_username, add_user
+from database.data_access import get_users, get_user_by_id, \
+     get_user_by_username, add_user
 
 
 app = Flask(__name__)
@@ -25,6 +26,14 @@ def new_user():
 
     add_user(username, password)
     return jsonify({'message': 'New user added'}), 201
+
+@app.route('/api/v1/user/<int:id>', methods=['GET'])
+def get_user(id):
+    user = get_user_by_id(id)
+    if not user:
+        print('Invalid user id provided.')
+        return jsonify({'message':'Invalid user id provided.'}), 200
+    return jsonify({"username": user.username})
 
 
 if __name__ == '__main__':
