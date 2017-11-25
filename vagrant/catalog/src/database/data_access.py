@@ -24,8 +24,9 @@ def get_user_by_username(username):
     except:
         return None
 
-def add_user(username):
+def add_user(username, password):
     '''Insert new user into the User table'''
     newUser = User(username=username)
+    newUser.hash_password(password)
     session.add(newUser)
     session.commit()

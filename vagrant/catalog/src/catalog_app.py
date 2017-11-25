@@ -11,10 +11,11 @@ app = Flask(__name__)
 @app.route('/user', methods=['POST'])
 def new_user():
     username = request.json.get('username')
-    print (username)
+    password = request.json.get('password')
 
-    if username is None:
-        abort(400) # missing arguments
+    if not username or not password:
+        print("Missing arguments")
+        abort(400)
 
     user = get_user_by_username(username)
 
@@ -22,7 +23,7 @@ def new_user():
         print('Existing Username')
         return jsonify({'message':'User already exists'}), 200
 
-    add_user(username)
+    add_user(username, password)
     return jsonify({'message': 'New user added'}), 201
 
 
