@@ -42,3 +42,8 @@ def add_user(username, password):
     newUser.hash_password(password)
     session.add(newUser)
     session.commit()
+
+
+def verify_auth_token(token):
+    '''Verify token'''
+    return User.verify_auth_token(token)
