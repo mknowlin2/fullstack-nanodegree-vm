@@ -17,6 +17,7 @@ def get_users():
     users = session.query(User).all()
     return users
 
+
 def get_user_by_id(id):
     '''Retrieve user by id from the User table'''
     try:
@@ -25,6 +26,7 @@ def get_user_by_id(id):
     except:
         return None
 
+
 def get_user_by_username(username):
     '''Retrieve user by name from the User table'''
     try:
@@ -32,6 +34,7 @@ def get_user_by_username(username):
         return user
     except:
         return None
+
 
 def add_user(username, password):
     '''Insert new user into the User table'''
