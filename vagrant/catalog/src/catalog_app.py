@@ -43,7 +43,7 @@ def verify_password(username_or_token, password):
 
 
 @app.route('/catalog/login')
-def start():
+def showLogin():
     return render_template('login.html')
 
 
@@ -137,6 +137,11 @@ def login(provider):
 def get_auth_token():
     token = g.user.generate_auth_token()
     return jsonify({'token': token.decode('ascii')})
+
+
+@app.route('/catalog', methods=['GET'])
+def showCatalog():
+    return render_template('catalog.html')
 
 
 @app.route('/catalog/user', methods=['POST'])
