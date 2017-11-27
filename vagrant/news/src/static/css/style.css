@@ -1,0 +1,55 @@
+body {
+  position: relative;
+}
+
+hr {
+  width: 100%;
+  border-top: 2px solid #000 !important;
+}
+
+h1 { text-align: left; }
+
+main h2 {
+  font-family: "Abril Fatface", cursive;
+}
+
+div.logs { border: 1px solid #999;
+           padding: 10px 10px;
+           margin: 10px 20%; }
+
+.logo {
+  width: 20%;
+  background: #fff;
+}
+
+.banner {
+  width: 80%;
+  text-align: right;
+  background: #fff;
+}
+
+.page-title {
+  font-family: "Abril Fatface", cursive;
+}
+
+.row {
+  margin-bottom: 1rem;
+}
+
+.row .row {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.stats h3 {
+  font-family: "Abril Fatface", cursive;
+}
+
+[class*="col-"] {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+#logo {
+  height: 80px;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <!-- Meta tags -->
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta charset="utf-8">
+
+      <!-- CSS -->
+      <link rel="stylesheet" href="./static/css/bootstrap/bootstrap.min.css">
+      <link rel="stylesheet" href="./static/css/style.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface">
+
+      <title>News Database Logs</title>
+    </head>
+    <body>
+      <header class="container">
+        <div class="row">
+          <div class="logo col-sm-3 col-md-3 col-lg-3">
+            <img id="logo" src="./static/img/kanji520.png" alt="Logo image">
+          </div>
+          <div class="banner col-sm-9 col-md-9 col-lg-9">
+            <h1 class="page-title">News Logs</h1>
+          </div>
+        </div>
+      </header>
+      <main class="container">
+        <div class="row">
+          <div class="col">
+            <h2>Statistics</h2>
+            <div class="row">
+              <div class="col">
+                <section id="top_articles" class="stats">
+                  <h3>Most Viewed Articles</h3>
+                  <hr>
+                  <!-- log content will go here -->
+                  {0}
+                </section>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <section id="author_ranks" class="stats">
+                  <h3>Author Rankings by Views</h3>
+                  <hr>
+                  <!-- log content will go here -->
+                  {1}
+                </section>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <section id="err_stat" class="stats">
+                  <h3>High Error Volume Days</h3>
+                  <hr>
+                  <!-- log content will go here -->
+                  {2}
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer class="footer container">
+        <div class="row">
+          <div class="col">
+            <sub>Copyright &copy; 2017 by Michael A. Knowlin II</sub>
+          </div>
+        </div>
+      </footer>
+      <!-- JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+              integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+              crossorigin="anonymous"></script>
+      <script src="./static/js/jquery-3.2.1.slim.min.js"></script>
+      <script src="./static/js/bootstrap/bootstrap.min.js"></script>
+      <!-- FontAwesome -->
+      <script src="https://use.fontawesome.com/afc45895d5.js"></script>
+    </body>
+</html>
