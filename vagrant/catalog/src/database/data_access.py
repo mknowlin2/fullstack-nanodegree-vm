@@ -36,10 +36,26 @@ def get_user_by_username(username):
         return None
 
 
+def get_user_by_email(email):
+    '''Retrieve user by email from the User table'''
+    try:
+        user = session.query(User).filter_by(email=email).one()
+        return user
+    except:
+        return None
+
+
 def add_user(username, password):
     '''Insert new user into the User table'''
     newUser = User(username=username)
     newUser.hash_password(password)
+    session.add(newUser)
+    session.commit()
+
+
+def add_3rd_prty_user(username, picture, email):
+    '''Insert new 3rd party user into the User table'''
+    newUser = User(username=username, picture=picture, email=email)
     session.add(newUser)
     session.commit()
 
