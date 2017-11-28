@@ -40,7 +40,7 @@
             // Send the code to the server
             $.ajax({
               type: 'POST',
-              url: '/oauth/google',
+              url: '/oauth/google?state={{STATE}}',
               processData: false,
               data: authResult['code'],
               contentType: 'application/octet-stream; charset=utf-8',
@@ -49,9 +49,9 @@
                 if (result) {
                   $('#result').html('Login Successful!</br>' +
                      result + '</br>Redirecting...')
-                  /* setTimeout(function(){
-                     window.location.href = "/restaurant";
-                   }, 4000); */
+                   setTimeout(function(){
+                     window.location.href = "/catalog";
+                   });
                 } else if (authResult['error']) {
                   console.log('There was an error: ' + authResult['error']);
                 } else {
