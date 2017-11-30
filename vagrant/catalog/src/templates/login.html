@@ -14,8 +14,30 @@
     </div>
     <div id="result"></div>
     <div>
-      <!--NEW GOOGLE SIGN IN BUTTON -->
-      <h2>There's a new Google Sign-In Option!!</h2>
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <div class="flash">
+        {% for message in messages %}
+        <div class="row">
+          <div class="col">
+            <li><strong>{{message}}</strong></li>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% endwith %}
+      <form action="http://localhost:5000/oauth/internal?state={{STATE}}" method="POST">
+        <label>Username:
+          <input type="text" required name="username">
+        </label>
+        <br>
+        <label>Password:
+          <input type="password" required name="password">
+        </label>
+        <br>
+        <button type=submit>Log in!</button>
+      </form>
       <div id="signinButton">
         <span class="g-signin"
           data-scope="openid email"

@@ -57,7 +57,6 @@ def showLogin():
 @auth.login_required
 def get_auth_token():
     token = g.user.generate_auth_token()
-    login_session['state'] = token
     return jsonify({'token': token.decode('ascii')})
 
 
@@ -107,6 +106,29 @@ def login(provider):
         response = make_response(json.dumps('Invalid state parameter.'), 401)
         response.headers['Content-Type'] = 'application/json'
         return response
+
+    if provider == 'internal':
+        login_session['provider'] = 'internal'
+        verified = verify_password(request.form['username'],
+                        request.form['password'])
+
+        if verified == True:
+            login_session['username'] = g.user.username
+            login_session['picture'] = g.user.picture
+            login_session['email'] = g.user.email
+            login_session['user_token'] = g.user.generate_auth_token()
+
+            print('username: {}'.format(login_session['username']))
+            print('picture: {}'.format(login_session['picture']))
+            print('email: {}'.format(login_session['email']))
+            print('user_token: {}'.format(login_session['user_token']))
+
+            return redirect(url_for('showCatalog'))
+        else:
+            flash("Username and password are invalid.")
+            return redirect(url_for('showLogin'))
+
+        return jsonify({'message': 'Internal Provider'})
 
     if provider == 'google':
         login_session['provider'] = 'google'
@@ -209,7 +231,8 @@ def login(provider):
         print('user_token: {}'.format(login_session['user_token']))
 
         # Send back token to the client
-        return jsonify({'token': token.decode('ascii')})
+        # return jsonify({'token': token.decode('ascii')})
+        return 'Success'
     else:
         return jsonify({'message': 'Unrecognizied Provider'})
 
@@ -243,9 +266,6 @@ def gdisconnect():
         response.headers['Content-Type'] = 'application/json'
         return response
 
-    #credentials = google.oauth2 \
-    #                    .credentials \
-    #                    .Credentials(**login_session['credentials'])
     access_token = login_session['access_token']
 
     revoke = requests.post('https://accounts.google.com/o/oauth2/revoke',
