@@ -3,5 +3,18 @@
 {% include "header.html" %}
 <div class="container">
   <h1>Catalog Main Page</h1>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <div class="flash">
+    {% for message in messages %}
+    <div class="row">
+      <div class="col">
+        <li><strong>{{message}}</strong></li>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% endwith %}
 </div>
 {% endblock %}
